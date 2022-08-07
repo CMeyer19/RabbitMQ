@@ -1,6 +1,6 @@
 ﻿using MassTransit;
 using Microsoft.AspNetCore.Mvc;
-using Producer.RabbitMQ;
+using RabbitMQ.Messages;
 
 namespace Producer.Controllers
 {
@@ -23,7 +23,7 @@ namespace Producer.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] string value)
         {
-            await _publishEndpoint.Publish<ValueEntered>(new { Value = value });
+            await _publishEndpoint.Publish<SharedEvent>(new { Value = value });
 
             return Ok();
         }

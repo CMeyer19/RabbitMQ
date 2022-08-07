@@ -1,5 +1,6 @@
 using MassTransit;
 using Producer.RabbitMQ;
+using RabbitMQ.Messages;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ builder.Services.AddMassTransit(x =>
         cfg.ReceiveEndpoint("value-entered-test-producer", e =>
         {
             e.Bind("value-entered");
-            e.Bind<ValueEntered>();
+            e.Bind<SharedEvent>();
         });
         cfg.ConfigureEndpoints(context);
     });

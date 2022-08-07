@@ -1,8 +1,9 @@
 ﻿using MassTransit;
+using RabbitMQ.Messages;
 
 namespace Producer.RabbitMQ
 {
-    public class ValueEnteredConsumer : IConsumer<ValueEntered>
+    public class ValueEnteredConsumer : IConsumer<SharedEvent>
     {
         readonly ILogger<ValueEnteredConsumer> _logger;
 
@@ -11,7 +12,7 @@ namespace Producer.RabbitMQ
             _logger = logger;
         }
 
-        public async Task Consume(ConsumeContext<ValueEntered> context)
+        public async Task Consume(ConsumeContext<SharedEvent> context)
         {
             _logger.LogInformation("Value Entered: {Value}", context.Message.Value);
         }

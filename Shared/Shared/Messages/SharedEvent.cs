@@ -1,6 +1,6 @@
-﻿namespace Producer.RabbitMQ
+﻿namespace RabbitMQ.Messages
 {
-    public class ValueEntered
+    public class SharedEvent
     {
         public string Value { get; set; } = string.Empty;
     }
