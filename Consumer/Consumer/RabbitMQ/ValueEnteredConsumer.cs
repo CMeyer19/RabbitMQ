@@ -20,13 +20,6 @@ namespace Consumer.RabbitMQ
 
     class ValueEnteredConsumerDefinition : ConsumerDefinition<ValueEnteredConsumer>
     {
-        public ValueEnteredConsumerDefinition()
-        {
-            // limit the number of messages consumed concurrently
-            // this applies to the consumer only, not the endpoint
-            ConcurrentMessageLimit = 8;
-        }
-
         protected override void ConfigureConsumer(
             IReceiveEndpointConfigurator endpointConfigurator,
             IConsumerConfigurator<ValueEnteredConsumer> consumerConfigurator
